@@ -33,9 +33,9 @@ trait Foo {
 }
 ```
 
-## 裸性状对象
+## 裸 trait 对象
 
-这个棉绒暗示使用`dyn Trait`对于特质对象。一些触发此 lint 的示例代码：
+这个 lint 暗示对 trait 对象，使用`dyn Trait`。一些触发此 lint 的示例代码：
 
 ```rust
 #![feature(dyn_trait)]
@@ -69,9 +69,9 @@ fn takes_trait_object(_: Box<dyn Trait>) {
 }
 ```
 
-## 箱形指针
+## box 指针
 
-这使用了 Box 类型。一些触发此 lint 的示例代码：
+给 Box 类型使用的 lints。一些触发此 lint 的示例代码：
 
 ```rust
 struct Foo {
@@ -90,9 +90,9 @@ error: type uses owned (Box type) pointers: std::boxed::Box<isize>
   |
 ```
 
-这种棉绒主要是历史性的，并不是特别有用。`Box<T>`以前用于构建语言，以及进行堆分配的唯一方法。今天的 Rust 可以调用其他分配器等。
+这种 lint 主要是历史性的，并不是特别有用。以前，`Box<T>`是用于构建语言，以及进行堆分配的唯一方法。今天的 Rust 可以调用其他分配器等。
 
-## 消隐率寿命在路径
+## elided-lifetime-in-path
 
 此 lint 检测隐藏生命周期参数的使用。一些触发此 lint 的示例代码：
 
@@ -116,11 +116,11 @@ error: hidden lifetime parameters are deprecated, try `Foo<'_>`
   |
 ```
 
-终生 elision 在这一生中消失了，但是这个被弃用了。
+生命周期省略规则隐藏这个生命周期，但是这个被弃用了。
 
-## 缺少拷贝的实现
+## 缺少 Copy 的实现
 
-这个 lint 检测到可能被遗忘的实现`Copy`。一些触发此 lint 的示例代码：
+这个 lint 检测到可能被遗忘的`Copy`实现。一些触发此 lint 的示例代码：
 
 ```rust
 pub struct Foo {
@@ -141,13 +141,14 @@ error: type could implement `Copy`; consider adding `impl Copy`
   |
 ```
 
-您可以通过派生来修复 lint`Copy`。
+您可以通过派生`Copy`，来修复 lint。
 
-这个 lint 被设置为'allow'，因为这个代码并不坏;特别是这样写一个类似的新类型是很常见的`Copy`类型不再`Copy`。
+这个 lint 被设置为'allow'，因为这个代码并不坏; 特别是常写一个类似这样的新类型，所以一个`Copy`类型不再是`Copy`（it's common to write
+newtypes like this specifically so that a `Copy` type is no longer `Copy`）。
 
-## 缺少调试的实现
+## 缺少 Debug 的实现
 
-此 lint 检测到缺少的实现`fmt::Debug`。一些触发此 lint 的示例代码：
+此 lint 检测到缺少的`fmt::Debug`实现。一些触发此 lint 的示例代码：
 
 ```rust
 pub struct Foo;
@@ -164,11 +165,11 @@ error: type does not implement `fmt::Debug`; consider adding #[derive(Debug)] or
   |
 ```
 
-您可以通过派生来修复 lint`Debug`。
+您可以通过派生`Debug`来修复 lint。
 
-## 失踪文档
+## 缺乏文档
 
-此 lint 检测到公共项目的缺失文档。一些触发此 lint 的示例代码：
+此 lint 检测到公有项的缺乏文档。一些触发此 lint 的示例代码：
 
 ```rust
 pub fn foo() {}
@@ -197,9 +198,9 @@ error: missing documentation for a function
 
 要修复 lint，请为所有项添加文档。
 
-## 单次使用的，寿命
+## 使用一次的生命周期
 
-此 lint 检测仅使用一次的寿命。一些触发此 lint 的示例代码：
+此 lint 检测仅使用一次的生命周期。一些触发此 lint 的示例代码：
 
 ```rust
 struct Foo<'x> {
@@ -218,9 +219,9 @@ error: lifetime name `'x` only used once
   |
 ```
 
-## 琐碎，铸件
+## 琐碎成本
 
-这种棉绒可以检测到可以移除的琐碎石膏。一些触发此 lint 的示例代码：
+这种 lint 可以检测到可以移除的琐碎成本。一些触发此 lint 的示例代码：
 
 ```rust
 let x: &u32 = &42;
@@ -243,7 +244,7 @@ note: lint level defined here
   |         ^^^^^^^^^^^^^
 ```
 
-## 平凡的数字，铸件
+## 琐碎数字成本
 
 此 lint 检测可以删除的数字类型的简单转换。一些触发此 lint 的示例代码：
 
@@ -262,9 +263,9 @@ error: trivial numeric cast: `i32` as `i32`. Cast can be replaced by coercion, t
   |
 ```
 
-## 不可达，酒馆
+## 不可达-pub
 
-这个棉绒触发了`pub`从箱子根无法到达的物品。一些触发此 lint 的示例代码：
+这个 lint 无法从箱子根触发了到达的`pub`项。一些触发此 lint 的示例代码：
 
 ```rust
 mod foo {
@@ -289,7 +290,7 @@ error: unreachable `pub` item
 
 ## 不安全的代码
 
-这种棉绒可以使用`unsafe`码。一些触发此 lint 的示例代码：
+这种 lint 可以使用`unsafe`码。一些触发此 lint 的示例代码：
 
 ```rust
 fn main() {
@@ -316,9 +317,9 @@ error: usage of an `unsafe` block
 
 此 lint 已弃用，不再使用。
 
-## 未使用的-的 extern-包装箱
+## unused-extern-crates
 
-这种棉绒可以防止`extern crate`从未使用过的物品。一些触发此 lint 的示例代码：
+这种 lint 可以防止`extern crate`，从未使用过的箱。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 extern crate semver;
@@ -335,9 +336,9 @@ error: unused extern crate
   |
 ```
 
-## 未使用的进口，括号
+## unused-import-braces
 
-此 lint 捕获导入项目周围不必要的括号。一些触发此 lint 的示例代码：
+此 lint 捕获导入项目周围，有不必要的括号。一些触发此 lint 的示例代码：
 
 ```rust
 use test::{A};
@@ -361,7 +362,7 @@ error: braces around A is unnecessary
 
 要解决这个问题，`use test::A;`
 
-## 未使用的，资格
+## unused-qualifications
 
 此 lint 检测到不必要的限定名称。一些触发此 lint 的示例代码：
 
@@ -387,9 +388,9 @@ error: unnecessary qualification
   |
 ```
 
-你可以打电话`bar()`直接，没有`foo::`。
+你可以直接调用`bar()`，没有`foo::`。
 
-## 未使用的，结果
+## unused-results
 
 此 lint 检查语句中表达式的未使用结果。一些触发此 lint 的示例代码：
 
@@ -412,7 +413,7 @@ error: unused result
   |
 ```
 
-## 变体大小的差异
+## variant-size-differences
 
 此 lint 检测具有各种变体大小的枚举。一些触发此 lint 的示例代码：
 
