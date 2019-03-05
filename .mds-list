@@ -1,0 +1,16 @@
+./source/src/SUMMARY.md
+./source/src/codegen-options/index.md
+./source/src/command-line-arguments.md
+./source/src/contributing.md
+./source/src/linker-plugin-lto.md
+./source/src/lints/groups.md
+./source/src/lints/index.md
+./source/src/lints/levels.md
+./source/src/lints/listing/allowed-by-default.md
+./source/src/lints/listing/deny-by-default.md
+./source/src/lints/listing/index.md
+./source/src/lints/listing/warn-by-default.md
+./source/src/targets/built-in.md
+./source/src/targets/custom.md
+./source/src/targets/index.md
+./source/src/what-is-rustc.md
