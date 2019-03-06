@@ -23,7 +23,7 @@ warning: attempt to add with overflow
 
 ## dead-code
 
-此 lint 检测未使用的未导出项目。一些触发此 lint 的示例代码：
+此 lint 检测未使用的，未导出的项。一些触发此 lint 的示例代码：
 
 ```rust
 fn foo() {}
@@ -66,7 +66,7 @@ warning: use of deprecated item 'foo'
 
 ## illegal-floating-point-literal-pattern
 
-此 lint 检测模式中使用的浮点文字。一些触发此 lint 的示例代码：
+此 lint 检测模式中使用的浮点数字面量。一些触发此 lint 的示例代码：
 
 ```rust
 let x = 42.0;
@@ -93,7 +93,7 @@ warning: floating-point literals cannot be used in patterns
 
 ## improper-ctypes
 
-此 lint 检测到外部模块中 libc 类型的正确使用。一些触发此 lint 的示例代码：
+此 lint 检测到外部模块中， libc 类型的正确使用。一些触发此 lint 的示例代码：
 
 ```rust
 extern "C" {
@@ -114,7 +114,9 @@ warning: found struct without foreign-function-safe representation annotation in
 
 ## late-bound-lifetime-arguments
 
-此 lint 使用延迟绑定生存期参数检测路径段中的通用生存期参数。一些触发此 lint 的示例代码：
+> ???
+
+此 lint 使用后绑定生命周期参数，检测路径片段中的泛型生存周期参数。一些触发此 lint 的示例代码：
 
 ```rust
 struct S;
@@ -147,7 +149,7 @@ warning: cannot specify lifetime arguments explicitly if late bound lifetime par
 
 ## non-camel-case-types
 
-此 lint 检测没有驼峰案例名称的类型，变体，特征和类型参数。一些触发此 lint 的示例代码：
+此 lint 检测没有驼峰形式名称的类型，变体，trait 和类型参数。一些触发此 lint 的示例代码：
 
 ```rust
 struct s;
@@ -166,7 +168,7 @@ warning: type `s` should have a camel case name such as `S`
 
 ## non-shorthand-field-patterns
 
-此 lint 检测使用`Struct { x: x }`代替`Struct { x }`在一个模式中。一些触发此 lint 的示例代码：
+此 lint 检测在一个模式中，使用`Struct { x: x }`能代替`Struct { x }`。一些触发此 lint 的示例代码：
 
 ```rust
 struct Point {
@@ -210,7 +212,7 @@ warning: the `y:` in this pattern is redundant
 
 ## non-snake-case
 
-此 lint 检测没有蛇案例名称的变量，方法，函数，生命周期参数和模块。一些触发此 lint 的示例代码：
+此 lint 检测没有蛇形式名称的变量，方法，函数，生命周期参数和模块。一些触发此 lint 的示例代码：
 
 ```rust
 let X = 5;
@@ -229,7 +231,7 @@ warning: variable `X` should have a snake case name such as `x`
 
 ## non-upper-case-globals
 
-此 lint 检测不具有大写标识符的静态常量。一些触发此 lint 的示例代码：
+此 lint 检测不大写的静态常量。一些触发此 lint 的示例代码：
 
 ```rust
 static x: i32 = 5;
@@ -248,7 +250,7 @@ warning: static variable `x` should have an upper case name such as `X`
 
 ## no-mangle-generic-items
 
-此 lint 检测通用项必须被修复。一些触发此 lint 的示例代码：
+此 lint 检测泛型项必须被修复(mangle)。一些触发此 lint 的示例代码：
 
 ```rust
 #[no_mangle]
@@ -295,7 +297,7 @@ warning: path statement with no effect
 
 ## patterns-in-fns-without-body
 
-这个 lint 检测到以前错误地允许的没有身体的函数中的模式。一些触发此 lint 的示例代码：
+这个 lint 检测到以前的错误，就是没有身体的函数模式。一些触发此 lint 的示例代码：
 
 ```rust
 trait Trait {
@@ -317,7 +319,7 @@ warning: patterns aren't allowed in methods without bodies
   = note: for more information, see issue #35203 <https://github.com/rust-lang/rust/issues/35203>
 ```
 
-要解决此问题，请删除该模式;它可以在实现中使用而无需在定义中使用。那是：
+要解决此问题，请删除该模式; 它可以在实现中使用，而无需在定义中使用`mut`。那是：
 
 ```rust
 trait Trait {
@@ -333,7 +335,7 @@ impl Trait for i32 {
 
 ## plugin-as-library
 
-此 lint 检测编译器插件何时用作非插件包中的普通库。一些触发此 lint 的示例代码：
+此 lint 检测，当编译器插件用作非插件包中的普通库。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 #![feature(plugin)]
@@ -344,7 +346,7 @@ extern crate macro_crate_test;
 
 ## private-in-public
 
-此 lint 检测未被旧实现捕获的公共接口中的私有项。一些触发此 lint 的示例代码：
+此 lint 检测未被旧实现捕获的公有接口中的私有项。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 pub trait Trait {
@@ -375,7 +377,7 @@ error[E0446]: private type `foo::Z` in public interface
 
 ## private-no-mangle-fns
 
-此 lint 检测标记的功能`#[no_mangle]`这也是私人的。鉴于私人职能不公开，并且`#[no_mangle]`控制公共符号，这种组合是错误的。一些触发此 lint 的示例代码：
+此 lint 检测标记`#[no_mangle]`的函数，这也是私有的。鉴于私有函数不公开，并且`#[no_mangle]`控制公有符号，这种组合是错误的。一些触发此 lint 的示例代码：
 
 ```rust
 #[no_mangle]
@@ -395,11 +397,11 @@ warning: function is marked #[no_mangle], but not exported
   |
 ```
 
-要解决此问题，请将其公开或删除`#[no_mangle]`。
+要解决此问题，请将其公有或删除`#[no_mangle]`。
 
 ## private-no-mangle-statics
 
-此 lint 检测到标记的任何静电`#[no_mangle]`这是私人的。鉴于私人静态不公开，并且`#[no_mangle]`控制公共符号，这种组合是错误的。一些触发此 lint 的示例代码：
+此 lint 检测到标记`#[no_mangle]`的任何静态是私有的。鉴于私有静态不公开，并且`#[no_mangle]`控制公共符号，这种组合是错误的。一些触发此 lint 的示例代码：
 
 ```rust
 #[no_mangle]
@@ -444,7 +446,7 @@ warning: lint raw_pointer_derive has been removed: using derive with raw pointer
 
 ## safe-packed-borrows
 
-此 lint 检测借用除 1 之外的对齐的压缩结构内部的字段。触发此 lint 的一些示例代码：这将产生：
+此 lint 检测借用除 1 之外的压缩对齐结构内部的字段。触发此 lint 的一些示例代码：
 
 ```rust
 #[repr(packed)]
@@ -461,7 +463,7 @@ fn main() {
 }
 ```
 
-稳定的功能
+这将产生：
 
 ```text
 warning: borrow of packed field requires unsafe function or block (error E0133)
@@ -477,7 +479,7 @@ warning: borrow of packed field requires unsafe function or block (error E0133)
 
 ## stable-features
 
-从那以后的属性变得稳定了。`#[feature]`一些触发此 lint 的示例代码：这将产生：
+此 lint 检测`#[feature]`的属性变得稳定了。一些触发此 lint 的示例代码：这将产生：
 
 ```rust
 #![feature(test_accepted_feature)]
@@ -498,7 +500,7 @@ warning: this feature has been stable since 1.0.0. Attribute no longer needed
 
 ## type-alias-bounds
 
-这些目前尚未执行。一些触发此 lint 的示例代码：
+这 lint 检测类型别名的边界。目前未被执行。一些触发此 lint 的示例代码：
 
 ```rust
 type SendVec<T: Send> = Vec<T>;
@@ -517,7 +519,7 @@ warning: type alias is never used: `SendVec`
 
 ## tyvar-behind-raw-pointer
 
-此 lint 检测指向推理变量的原始指针。一些触发此 lint 的示例代码：
+此 lint 检测指向一个推断变量的原始指针。一些触发此 lint 的示例代码：
 
 ```rust
 let data = std::ptr::null();
@@ -542,7 +544,7 @@ warning: type annotations needed
 
 ## unconditional-recursion
 
-此 lint 检测在不调用自身的情况下无法返回的函数。一些触发此 lint 的示例代码：
+此 lint 检测在不调用自身的情况下，无法返回的函数。一些触发此 lint 的示例代码：
 
 ```rust
 fn foo() {
@@ -565,7 +567,7 @@ warning: function cannot return without recursing
 
 ## unions-with-drop-fields
 
-此 lint 检测使用包含可能非平凡丢弃代码的字段的联合。一些触发此 lint 的示例代码：
+此 lint 检测联合的使用，其包含可能是重要丢弃代码的字段。一些触发此 lint 的示例代码：
 
 ```rust
 #![feature(untagged_unions)]
@@ -653,15 +655,15 @@ warning: unreachable pattern
 
 ## unstable-name-collision
 
-此 lint 检测到您使用了标准库计划在将来添加的名称，这意味着将来如果没有其他类型注释，您的代码可能无法编译。重命名，或立即添加这些注释。
+此 lint 检测到您使用了标准库计划在将来添加的名称，这意味着将来如果没有其他类型注释，您的代码可能无法编译。请重命名，或立即添加这些注释。
 
 ## unused-allocation
 
-此 lint 检测可以消除的不必要的分配。
+此 lint 检测可以消除的不必要的内存分配。
 
 ## unused-assignments
 
-此 lint 检测永远不会读取的分配。一些触发此 lint 的示例代码：
+此 lint 检测永远不会读取的内存分配。一些触发此 lint 的示例代码：
 
 ```rust
 let mut x = 5;
@@ -702,7 +704,7 @@ warning: unused attribute
 
 ## unused-comparisons
 
-此 lint 检测到所涉及的类型的限制使得比较变得无用。一些触发此 lint 的示例代码：
+此 lint 检测到所涉及的类型限制使得 比较操作 变得无用。一些触发此 lint 的示例代码：
 
 ```rust
 fn foo(x: u8) {
@@ -743,7 +745,7 @@ warning: doc comment not used by rustdoc
 
 ## unused-features
 
-此 lint 检测在 crate-level＃中找到的未使用或未知功能[特征]指令。要解决此问题，只需删除功能标志即可。
+此 lint 检测在 crate-level 的`#[feature]`指令 中，找到的未使用或未知功能。要解决此问题，只需删除功能标志即可。
 
 ## unused-imports
 
@@ -792,7 +794,7 @@ warning: unused macro definition
 
 ## unused-must-use
 
-此 lint 检测标记为＃的类型的未使用结果[must_use]。一些触发此 lint 的示例代码：
+此 lint 检测标记为`＃[must_use]`的类型的未使用结果。一些触发此 lint 的示例代码：
 
 ```rust
 fn returns_result() -> Result<(), ()> {
@@ -817,7 +819,7 @@ warning: unused `std::result::Result` that must be used
 
 ## unused-mut
 
-此 lint 检测不需要是可变的 mut 变量。一些触发此 lint 的示例代码：
+此 lint 检测不需要可变的 mut 变量。一些触发此 lint 的示例代码：
 
 ```rust
 let mut x = 5;
@@ -895,7 +897,7 @@ warning: unused variable: `x`
 
 ## warnings
 
-这种棉绒有点特别;通过更改其级别，您可以更改每个其他警告，这些警告会对您想要的任何值产生警告：
+这种 lint 有点特别;通过更改其级别，您可以更改每个其他警告，这些警告会对您想要的任何值产生警告：
 
 ```rust
 #![deny(warnings)]
@@ -905,7 +907,7 @@ warning: unused variable: `x`
 
 ## while-true
 
-这个棉绒检测到`while true { }`。一些触发此 lint 的示例代码：
+这个 lint 检测到`while true { }`。一些触发此 lint 的示例代码：
 
 ```rust,no_run
 while true {

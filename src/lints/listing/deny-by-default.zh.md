@@ -1,10 +1,10 @@
-# 拒绝默认的lints
+# 默认拒绝的 lints
 
-默认情况下，这些lint都设置为'deny'级别。
+默认情况下，这些 lint 都设置为'deny'级别。
 
-## 超过-bitshifts
+## exceeding-bitshifts
 
-此lint检测到移位超出了类型的位数。一些触发此lint的示例代码：
+此 lint 检测到移位超出了类型的位数。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 1_i32 << 32;
@@ -21,9 +21,9 @@ error: bitshift exceeds the type's number of bits
   |
 ```
 
-## 无效型PARAM默认
+## invalid-type-param-default
 
-此lint检测在无效位置中错误允许的类型参数默认值。一些触发此lint的示例代码：
+此 lint 检测在无效位置中，允许的类型参数默认值错误。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 fn foo<T=i32>(t: T) {}
@@ -43,14 +43,14 @@ error: defaults for type parameters are only allowed in `struct`, `enum`, `type`
   = note: for more information, see issue #36887 <https://github.com/rust-lang/rust/issues/36887>
 ```
 
-## 传统的构造函数能见度
+## legacy-constructor-visibility
 
-[RFC 1506](https://github.com/rust-lang/rfcs/blob/master/text/1506-adt-kinds.md)修改了一些可见性规则，并改变了struct构造函数的可见性。一些触发此lint的示例代码：
+[RFC 1506](https://github.com/rust-lang/rfcs/blob/master/text/1506-adt-kinds.md)修改了一些可见性规则，并改变了 struct 构造函数的可见性。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 mod m {
     pub struct S(u8);
-    
+
     fn f() {
         // this is trying to use S from the 'use' line, but because the `u8` is
         // not pub, it is private
@@ -75,25 +75,25 @@ error: private struct constructors are not usable through re-exports in outer mo
   = note: for more information, see issue #39207 <https://github.com/rust-lang/rust/issues/39207>
 ```
 
-## 遗产目录所有权
+## legacy-directory-ownership
 
-发出legacy_directory_ownership警告时发出
+发出 `legacy_directory_ownership` 时发出
 
--   有一个带有＃的非内联模块[路径]属性（例如＃[path =“foo"rs”.]mod bar;），
--   模块的文件（上例中的“foo.rs”）未命名为“mod.rs”，并且
--   模块的文件包含一个没有＃的非内联子模块[路径]属性。
+- 有一个带有`＃[path]`属性的非内联模块（例如`#[path = "foo.rs"]`mod bar;），
+- 模块的文件（上例中的“foo.rs”）是未命名为“mod.rs”，并且
+- 模块的文件包含一个`＃[path]`属性的非内联模块。
 
-可以通过将父模块重命名为“mod.rs”并将其移动到其自己的目录（如果适用）来修复警告。
+可以通过将父模块重命名为“mod.rs”，并将其移动到其自己的目录（如果合适的话）来修复警告。
 
-## 丢失片段的符
+## missing-fragment-specifier
 
-当一个未使用的模式出现时，会发出missing_fragment_specifier警告`macro_rules!`宏定义有一个元变量（例如`$e`）后面没有片段说明符（例如`:expr`）。
+当一个未使用的`macro_rules!`宏定义模式出现时，会发出 missing_fragment_specifier 警告，因其有一个元变量（例如`$e`）后面没有片段说明符（例如`:expr`）。
 
-通过删除中未使用的模式，可以始终修复此警告`macro_rules!`宏定义。
+通过删除未使用的`macro_rules!`宏定义模式，可以始终修复此警告。
 
-## 可变-蜕变
+## mutable-transmutes
 
-这种棉绒可以从中转化`&T`至`&mut T`因为它是未定义的行为。一些触发此lint的示例代码：
+这种 lint 抓取`&T`到`&mut T`的转化，因为它是未定义的行为。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 unsafe {
@@ -112,9 +112,9 @@ error: mutating transmuted &mut T from &T may cause undefined behavior, consider
   |
 ```
 
-## 无撕裂const的项
+## no-mangle-const-items
 
-这个lint检测到任何`const`用的物品`#[no_mangle]`属性。常量没有导出符号，因此，这可能意味着您打算使用`static`不是`const`。一些触发此lint的示例代码：
+这个 lint 检测到任何带`#[no_mangle]`属性的`const`项。常量确实没有导出符号，因此，这可能意味着您打算使用`static`不是`const`。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 #[no_mangle]
@@ -134,9 +134,9 @@ error: const items should never be #[no_mangle]
   |
 ```
 
-## 四溢，文字
+## overflowing-literals
 
-此lint检测其类型的字面值超出范围。一些触发此lint的示例代码：
+此 lint 检测其类型的字面值超出范围。一些触发此 lint 的示例代码：
 
 ```rust,compile_fail
 let x: u8 = 1000;
@@ -153,9 +153,9 @@ error: literal out of range for u8
   |
 ```
 
-## 括号的PARAMS-在类型和模块
+## parenthesized-params-in-types-and-modules
 
-此lint检测到不正确的括号。一些触发此lint的示例代码：
+此 lint 检测到不正确的括号。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 let x = 5 as usize();
@@ -175,19 +175,19 @@ error: parenthesized parameters may only be used with a trait
   = note: for more information, see issue #42238 <https://github.com/rust-lang/rust/issues/42238>
 ```
 
-要修复它，请删除`()`秒。
+要修复它，请删除多个`()`。
 
-## 酒馆的用的，私人的extern篓
+## pub-use-of-private-extern-crate
 
-此lint检测重新导出私有的特定情况`extern crate`;
+此 lint 检测重新导出一个私有`extern crate`的特定情况;
 
-## 安全-的extern-静
+## safe-extern-statics
 
-在旧版本的Rust中，存在健全问题`extern static`允许以安全代码访问s。这个棉绒现在抓住并否认这种代码。
+在旧版本的 Rust 中，允许`extern static`以安全代码访问，会存在安全问题。这个 lint 现在抓住并否认这种代码。
 
-## 未知箱类型
+## unknown-crate-types
 
-此lint检测到a中发现的未知包状态类型`#[crate_type]`指示。一些触发此lint的示例代码：
+此 lint 检测到在一个`#[crate_type]`指示中，发现一个未知箱类型。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 #![crate_type="lol"]
@@ -204,9 +204,9 @@ error: invalid `crate_type` value
   |
 ```
 
-## 语无伦次，根本-impls
+## incoherent-fundamental-impls
 
-此lint检测到错误允许的潜在冲突的impl。一些触发此lint的示例代码：
+此 lint 检测到错误允许的潜在冲突的 impl。一些触发此 lint 的示例代码：
 
 ```rust,ignore
 pub trait Trait1<X> {

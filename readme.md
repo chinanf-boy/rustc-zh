@@ -15,7 +15,7 @@
 
 ---
 
-## 校对 🀄️
+## 校对 ✅
 
 <!-- doc-templite START generated -->
 <!-- repo = 'rust-lang-nursery/rustc' -->
@@ -48,8 +48,8 @@
   - [x] [Lint 组](src/lints/groups.zh.md)
   - [x] [lint 列表](src/lints/listing/index.zh.md)
     - [x] [默认允许的 lints](src/lints/listing/allowed-by-default.zh.md)
-    - [ ] [默认警告的 lints](src/lints/listing/warn-by-default.zh.md)
-    - [ ] [默认禁止的 lints](src/lints/listing/deny-by-default.zh.md)
+    - [x] [默认警告的 lints](src/lints/listing/warn-by-default.zh.md)
+    - [x] [默认禁止的 lints](src/lints/listing/deny-by-default.zh.md)
 - [x] [代码生成选项](src/codegen-options/index.zh.md)
 - [x] [生成目标](src/targets/index.zh.md)
   - [x] [内置目标](src/targets/built-in.zh.md)
