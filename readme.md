@@ -9,24 +9,24 @@
 [size-img]: https://packagephobia.now.sh/badge?p=Name
 [size]: https://packagephobia.now.sh/result?p=Name
 
-「 Rustc 简书 」
+「 Rustc 简书 （非官方中文翻译） 」
 
-[中文](./readme.md) | [english](https://github.com/rust-lang-nursery/rustc)
+[中文](./readme.md) | [english](https://doc.rust-lang.org/rustc/index.html)
 
 ---
 
 ## 校对 ✅
 
 <!-- doc-templite START generated -->
-<!-- repo = 'rust-lang-nursery/rustc' -->
-<!-- commit = 'true' -->
-<!-- time = 'true' -->
+<!-- repo = 'rust-lang/rust' -->
+<!-- commit = '554aed6c7d449b75ea0a460e811c4f3069f60dd4' -->
+<!-- time = '2019-2-25' -->
 翻译的原文 | 与日期 | 最新更新 | 更多
 ---|---|---|---
-[commit] | ⏰ true | ![last] | [中文翻译][translate-list]
+[commit] | ⏰ 2019-2-25 | ![last] | [中文翻译][translate-list]
 
-[last]: https://img.shields.io/github/last-commit/rust-lang-nursery/rustc.svg
-[commit]: https://github.com/rust-lang-nursery/rustc/tree/true
+[last]: https://img.shields.io/github/last-commit/rust-lang/rust.svg
+[commit]: https://github.com/rust-lang-nursery/rust/tree/554aed6c7d449b75ea0a460e811c4f3069f60dd4
 
 <!-- doc-templite END generated -->
 
