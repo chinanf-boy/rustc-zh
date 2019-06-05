@@ -26,7 +26,7 @@
 [commit] | ⏰ 2019-2-25 | ![last] | [中文翻译][translate-list]
 
 [last]: https://img.shields.io/github/last-commit/rust-lang/rust.svg
-[commit]: https://github.com/rust-lang-nursery/rust/tree/554aed6c7d449b75ea0a460e811c4f3069f60dd4
+[commit]: https://github.com/rust-lang/rust/tree/554aed6c7d449b75ea0a460e811c4f3069f60dd4
 
 <!-- doc-templite END generated -->
 

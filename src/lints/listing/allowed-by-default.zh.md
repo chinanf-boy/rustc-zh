@@ -2,7 +2,7 @@
 
 默认情况下，这些 lint 都设置为'allow'级别。因此，除非您使用标志或属性将它们设置为更高的 lint 级别，否则它们将不会显示。
 
-## 匿名参数
+## anonymous-parameters
 
 此 lint 检测匿名参数。一些触发此 lint 的示例代码：
 
@@ -33,7 +33,7 @@ trait Foo {
 }
 ```
 
-## 裸 trait 对象
+## bare-trait-object
 
 这个 lint 暗示对 trait 对象，使用`dyn Trait`。一些触发此 lint 的示例代码：
 
@@ -69,7 +69,7 @@ fn takes_trait_object(_: Box<dyn Trait>) {
 }
 ```
 
-## box 指针
+## box-pointers
 
 给 Box 类型使用的 lints。一些触发此 lint 的示例代码：
 
@@ -118,7 +118,7 @@ error: hidden lifetime parameters are deprecated, try `Foo<'_>`
 
 生命周期省略规则隐藏这个生命周期，但是这个被弃用了。
 
-## 缺少 Copy 的实现
+## missing-copy-implementations
 
 这个 lint 检测到可能被遗忘的`Copy`实现。一些触发此 lint 的示例代码：
 
@@ -146,7 +146,7 @@ error: type could implement `Copy`; consider adding `impl Copy`
 这个 lint 被设置为'allow'，因为这个代码并不坏; 特别是常写一个类似这样的新类型，所以一个`Copy`类型不再是`Copy`（it's common to write
 newtypes like this specifically so that a `Copy` type is no longer `Copy`）。
 
-## 缺少 Debug 的实现
+## missing-debug-implementations
 
 此 lint 检测到缺少的`fmt::Debug`实现。一些触发此 lint 的示例代码：
 
@@ -167,7 +167,7 @@ error: type does not implement `fmt::Debug`; consider adding #[derive(Debug)] or
 
 您可以通过派生`Debug`来修复 lint。
 
-## 缺乏文档
+## missing-docs
 
 此 lint 检测到公有项的缺乏文档。一些触发此 lint 的示例代码：
 
@@ -198,7 +198,7 @@ error: missing documentation for a function
 
 要修复 lint，请为所有项添加文档。
 
-## 使用一次的生命周期
+## single-use-lifetime
 
 此 lint 检测仅使用一次的生命周期。一些触发此 lint 的示例代码：
 
@@ -219,7 +219,7 @@ error: lifetime name `'x` only used once
   |
 ```
 
-## 琐碎成本
+## trivial-casts
 
 这种 lint 可以检测到可以移除的琐碎成本。一些触发此 lint 的示例代码：
 
@@ -244,7 +244,7 @@ note: lint level defined here
   |         ^^^^^^^^^^^^^
 ```
 
-## 琐碎数字成本
+## trivial-numeric-casts
 
 此 lint 检测可以删除的数字类型的简单转换。一些触发此 lint 的示例代码：
 
@@ -263,7 +263,7 @@ error: trivial numeric cast: `i32` as `i32`. Cast can be replaced by coercion, t
   |
 ```
 
-## 不可达-pub
+## unreachable-pub
 
 这个 lint 无法从箱子根触发了到达的`pub`项。一些触发此 lint 的示例代码：
 
@@ -288,7 +288,7 @@ error: unreachable `pub` item
   |
 ```
 
-## 不安全的代码
+## unsafe-code
 
 这种 lint 可以使用`unsafe`码。一些触发此 lint 的示例代码：
 
@@ -313,7 +313,7 @@ error: usage of an `unsafe` block
   |
 ```
 
-## 不稳定的特性
+## unstable-features
 
 此 lint 已弃用，不再使用。
 
